@@ -1,9 +1,10 @@
 const inputCep = document.getElementById('cep')
 const btnCep = document.getElementById('btnCep')
-
+const msgError = document.getElementById('msgError')
 
 btnCep.addEventListener('click', e =>{
     const cep = inputCep.value
+    msgError.innerHTML = ''
     if(cep.length === 8){
         const URL = `https://ws.apicep.com/cep/${cep}.json`
 
@@ -12,7 +13,7 @@ btnCep.addEventListener('click', e =>{
 	        .catch(erro => console.error(erro));
 
     }else{
-        alert('Preencha o CEP corretamente!')
+       msgError.innerHTML = `<p>Cep inválido!</p> `
     }
     e.preventDefault()
 })
